@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casemate | Protect Your Style</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            teal: '#4FD1C5',
+                            dark: '#414141',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+        }
+
+        .social-gradient {
+            background: linear-gradient(to right, #ffffff 0%, #FFF5ED 40%, #FFDDBB 100%);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(12deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(10deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(12deg);
+            }
+        }
+
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hover-elevate {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform, box-shadow;
+        }
+
+        .hover-elevate:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+
+        .cursor-trail {
+            width: 8px;
+            height: 8px;
+            background: #4FD1C5;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.1s ease-out;
+            mix-blend-mode: difference;
+        }
+
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .parallax-target {
+            will-change: transform;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4FD1C5;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3dbdb1;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-900 bg-white overflow-x-hidden">
+    <div class="cursor-trail hidden md:block" id="cursor"></div>
+
+    <!-- Header -->
+    <header
+        class="bg-[#414141] text-white py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50 shadow-lg">
+        <div class="flex items-center gap-3" data-aos="fade-down" data-aos-duration="600">
+            <div class="w-10 h-10 border-2 border-white rounded-lg flex items-center justify-center p-1">
+                <div class="w-full h-full border-2 border-white rounded-md flex items-center justify-center">
+                    <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                </div>
+            </div>
+            <span class="font-outfit text-2xl font-bold tracking-widest uppercase">Casemate</span>
+        </div>
+
+        <nav class="hidden lg:flex gap-10 items-center text-sm font-medium" data-aos="fade-down" data-aos-duration="600"
+            data-aos-delay="100">
+            <a href="#" class="hover:text-brand-teal transition-all hover:scale-105">iPhone Cases</a>
+            <a href="#" class="hover:text-brand-teal transition-all hover:scale-105">Custom</a>
+            <a href="#" class="hover:text-brand-teal transition-all hover:scale-105">Accessories</a>
+            <a href="#" class="hover:text-brand-teal transition-all hover:scale-105">Sale</a>
+        </nav>
+
+        <div class="flex items-center gap-6" data-aos="fade-down" data-aos-duration="600" data-aos-delay="200">
+            <a href="#" class="hover:text-brand-teal transition-all hover:scale-125">
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+            </a>
+            <a href="#" class="hover:text-brand-teal transition-all hover:scale-125">
+                <i class="fa-solid fa-magnifying-glass text-xl"></i>
+            </a>
+            <button class="md:hidden">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+        class="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 flex flex-col md:flex-row items-center gap-12 min-h-[85vh] relative overflow-hidden">
+        <!-- Floating Bg Elements -->
+        <div class="absolute top-20 right-20 w-32 h-32 bg-brand-teal/5 rounded-full blur-3xl parallax-bg"
+            data-speed="0.2"></div>
+        <div class="absolute bottom-20 left-20 w-48 h-48 bg-pink-500/5 rounded-full blur-3xl parallax-bg"
+            data-speed="-0.1"></div>
+
+        <div class="flex-1 text-center md:text-left z-10" data-aos="fade-right" data-aos-duration="1000">
+            <h1
+                class="font-outfit text-5xl md:text-7xl font-black leading-tight text-gray-900 mb-8 uppercase tracking-tighter">
+                PROTECT YOUR STYLE.<br>
+                <span class="text-brand-teal">FIND YOUR PERFECT CASE</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-500 mb-10 max-w-lg leading-relaxed">
+                Explore our curated collection of durable & fashionable phone cases
+            </p>
+            <button
+                class="magnetic bg-[#4FD1C5] text-white font-black text-2xl px-16 py-6 rounded-2xl hover:bg-[#3dbdb1] transition-all transform hover:scale-105 shadow-[0_20px_50px_rgba(79,189,177,0.4)] uppercase tracking-widest active:scale-95">
+                SHOP NOW
+            </button>
+        </div>
+        <div class="flex-1 relative z-10 parallax-container" data-aos="zoom-in-left" data-aos-duration="1200">
+            <img src="C:/Users/Windows 11/.gemini/antigravity/brain/a3e629d9-5340-4f9e-a335-a47d0176daf0/hero_phone_cases_fan_1768745926621.png"
+                alt="Featured Phone Cases"
+                class="w-full h-auto drop-shadow-[0_45px_45px_rgba(0,0,0,0.18)] transform transition-transform duration-300 parallax-target"
+                id="hero-image">
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section class="max-w-7xl mx-auto px-6 md:px-12 py-16">
+        <h2 class="font-outfit text-3xl font-black mb-12 text-gray-900 uppercase tracking-widest" data-aos="fade-right">
+            Featured Collections</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Minimalist -->
+            <div class="group cursor-pointer tilt-card" data-aos="fade-up" data-aos-delay="100">
+                <div
+                    class="border-2 border-black rounded-[30px] p-12 flex flex-col items-center transition-all bg-white h-full hover:shadow-2xl">
+                    <img src="C:/Users/Windows 11/.gemini/antigravity/brain/a3e629d9-5340-4f9e-a335-a47d0176daf0/minimalist_case_1768745942923.png"
+                        alt="Minimalist"
+                        class="w-56 h-auto mb-8 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-xl">
+                    <h3 class="font-outfit font-black text-3xl mb-1 uppercase tracking-tight">Minimalist</h3>
+                </div>
+            </div>
+            <!-- Artistic -->
+            <div class="group cursor-pointer tilt-card" data-aos="fade-up" data-aos-delay="200">
+                <div
+                    class="border-2 border-black rounded-[30px] p-12 flex flex-col items-center transition-all bg-white h-full hover:shadow-2xl">
+                    <img src="C:/Users/Windows 11/.gemini/antigravity/brain/a3e629d9-5340-4f9e-a335-a47d0176daf0/artistic_case_1768745960546.png"
+                        alt="Artistic"
+                        class="w-56 h-auto mb-8 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-xl">
+                    <h3 class="font-outfit font-black text-3xl mb-1 uppercase tracking-tight">Artistic</h3>
+                    <p class="text-gray-400 font-bold text-sm tracking-widest">(VIEW COLLECTION)</p>
+                </div>
+            </div>
+            <!-- Tough Armor -->
+            <div class="group cursor-pointer tilt-card" data-aos="fade-up" data-aos-delay="300">
+                <div
+                    class="border-2 border-black rounded-[30px] p-12 flex flex-col items-center transition-all bg-white h-full hover:shadow-2xl">
+                    <img src="C:/Users/Windows 11/.gemini/antigravity/brain/a3e629d9-5340-4f9e-a335-a47d0176daf0/tough_armor_case_1768745976355.png"
+                        alt="Tough Armor"
+                        class="w-56 h-auto mb-8 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-xl">
+                    <h3 class="font-outfit font-black text-3xl mb-1 uppercase tracking-tight">Tough Armor</h3>
+                    <p class="text-gray-400 font-bold text-sm tracking-widest">(VIEW COLLECTION)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Woman Feature Section -->
+    <section class="max-w-7xl mx-auto px-6 md:px-12 py-20" data-aos="zoom-in">
+        <div class="bg-gradient-to-br from-[#F472B6] via-[#FBCFE8] to-[#FFF1F2] rounded-[50px] overflow-hidden flex flex-col md:flex-row items-center h-[500px] shadow-2xl relative transition-transform duration-700 hover:scale-[1.01]"
+            id="woman-section">
+            <div class="flex-1 p-10 md:p-20 w-full flex items-center justify-center md:justify-start z-10"
+                data-aos="fade-right" data-aos-delay="400">
+                <div
+                    class="glass-box rounded-[35px] p-10 w-full max-w-sm h-40 flex items-center shadow-2xl border border-white/50 transform hover:rotate-3 transition-transform duration-500">
+                    <div class="w-24 h-12 bg-[#4FD1C5] rounded-2xl shadow-inner"></div>
+                </div>
+            </div>
+            <div class="flex-1 w-full h-full relative" data-aos="fade-left" data-aos-delay="600">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1000&auto=format&fit=crop"
+                    alt="Woman"
+                    class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-1000">
+                <div class="absolute inset-0 bg-black/5"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="max-w-7xl mx-auto px-6 md:px-12 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Sarah Cook reviews -->
+            <div class="border border-gray-100 rounded-[2.5rem] p-10 flex flex-col gap-6 bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 tilt-card"
+                data-aos="fade-up" data-aos-delay="100">
+                <div class="flex gap-5 items-center">
+                    <div class="relative">
+                        <img src="C:/Users/Windows 11/.gemini/antigravity/brain/a3e629d9-5340-4f9e-a335-a47d0176daf0/user_avatar_sarah_1768745992067.png"
+                            alt="Sarah Cook"
+                            class="w-16 h-16 rounded-full object-cover shadow-md ring-4 ring-gray-100 transition-all hover:ring-brand-teal">
+                        <div
+                            class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 border-4 border-white rounded-full">
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-black text-xl">Sarah Cook</h4>
+                        <p class="text-[11px] text-gray-400 font-black uppercase tracking-[0.2em]">Verified Customer</p>
+                    </div>
+                </div>
+                <div class="flex text-[#FFD700] gap-1.5 text-lg">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-xl">"I absolutely love my new artistic case! The
+                    design is stunning and it feels very durable."</p>
+                <div
+                    class="mt-auto pt-6 flex justify-between text-[11px] text-gray-400 border-t border-gray-50 uppercase font-black tracking-widest">
+                    <span>Shopper Badge</span>
+                    <span>2 days ago</span>
+                </div>
+            </div>
+            <!-- Sarah Cook reviews 2 -->
+            <div class="border border-gray-100 rounded-[2.5rem] p-10 flex flex-col gap-6 bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 tilt-card"
+                data-aos="fade-up" data-aos-delay="200">
+                <div class="flex gap-5 items-center">
+                    <div class="relative">
+                        <img src="C:/Users/Windows 11/.gemini/antigravity/brain/a3e629d9-5340-4f9e-a335-a47d0176daf0/user_avatar_sarah_1768745992067.png"
+                            alt="Sarah Cook"
+                            class="w-16 h-16 rounded-full object-cover shadow-md ring-4 ring-gray-100 transition-all hover:ring-brand-teal">
+                        <div
+                            class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 border-4 border-white rounded-full">
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-black text-xl">Sarah Cook</h4>
+                        <p class="text-[11px] text-gray-400 font-black uppercase tracking-[0.2em]">Verified Customer</p>
+                    </div>
+                </div>
+                <div class="flex text-[#FFD700] gap-1.5 text-lg">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-xl">"The Tough Armor case gives me peace of mind.
+                    Not too bulky but powerful."</p>
+                <div
+                    class="mt-auto pt-6 flex justify-between text-[11px] text-gray-400 border-t border-gray-50 uppercase font-black tracking-widest">
+                    <span>Power Buyer</span>
+                    <span>5 days ago</span>
+                </div>
+            </div>
+            <!-- Sarah Cook reviews 3 -->
+            <div class="border border-gray-100 rounded-[2.5rem] p-10 flex flex-col gap-6 bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 tilt-card"
+                data-aos="fade-up" data-aos-delay="300">
+                <div class="flex gap-5 items-center">
+                    <div class="relative">
+                        <img src="C:/Users/Windows 11/.gemini/antigravity/brain/a3e629d9-5340-4f9e-a335-a47d0176daf0/user_avatar_sarah_1768745992067.png"
+                            alt="Sarah Cook"
+                            class="w-16 h-16 rounded-full object-cover shadow-md ring-4 ring-gray-100 transition-all hover:ring-brand-teal">
+                        <div
+                            class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 border-4 border-white rounded-full">
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-black text-xl">Sarah Cook</h4>
+                        <p class="text-[11px] text-gray-400 font-black uppercase tracking-[0.2em]">Verified Customer</p>
+                    </div>
+                </div>
+                <div class="flex text-[#FFD700] gap-1.5 text-lg">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic text-xl">"Beautiful minimalist designs. This is hands
+                    down the best phone case brand."</p>
+                <div
+                    class="mt-auto pt-6 flex justify-between text-[11px] text-gray-400 border-t border-gray-50 uppercase font-black tracking-widest">
+                    <span>Top Reviewer</span>
+                    <span>1 week ago</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Footer Section -->
+    <section class="social-gradient py-24 overflow-hidden relative">
+        <div
+            class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-20 relative z-10">
+            <!-- Phone Screens Graphic -->
+            <div class="flex-1 flex justify-center md:justify-start" data-aos="fade-right">
+                <div
+                    class="border-4 border-white rounded-[45px] p-10 glass-box shadow-2xl flex gap-6 transform transition-all hover:scale-110 duration-700">
+                    <img src="https://images.unsplash.com/photo-1556656793-062ff98782ee?q=80&w=200&auto=format&fit=crop"
+                        alt="Screen 1"
+                        class="w-24 h-44 object-cover border-4 border-black rounded-2xl shadow-xl hover:rotate-[-12deg] transition-all duration-500 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?q=80&w=200&auto=format&fit=crop"
+                        alt="Screen 2"
+                        class="w-24 h-44 object-cover border-4 border-black rounded-2xl shadow-xl z-10 scale-115 hover:scale-130 transition-all duration-500 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1592890288564-76628a30a657?q=80&w=200&auto=format&fit=crop"
+                        alt="Screen 3"
+                        class="w-24 h-44 object-cover border-4 border-black rounded-2xl shadow-xl hover:rotate-[12deg] transition-all duration-500 cursor-pointer">
+                </div>
+            </div>
+            <!-- Social Icons -->
+            <div class="flex-1 flex flex-wrap justify-center md:justify-end gap-10" data-aos="fade-left">
+                <a href="#"
+                    class="magnetic w-20 h-20 bg-black text-white rounded-[25px] flex items-center justify-center text-4xl hover:bg-brand-teal transition-all hover:scale-110 shadow-2xl">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#"
+                    class="magnetic w-20 h-20 bg-black text-white rounded-[25px] flex items-center justify-center text-4xl hover:bg-brand-teal transition-all hover:scale-110 shadow-2xl">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#"
+                    class="magnetic w-20 h-20 bg-black text-white rounded-[25px] flex items-center justify-center text-4xl hover:bg-brand-teal transition-all hover:scale-110 shadow-2xl">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="#"
+                    class="magnetic w-20 h-20 bg-black text-white rounded-[25px] flex items-center justify-center text-4xl hover:bg-brand-teal transition-all hover:scale-110 shadow-2xl">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Parallax Orbs -->
+        <div class="absolute -right-20 -top-20 w-80 h-80 bg-brand-teal/5 rounded-full blur-[120px] parallax-bg"
+            data-speed="0.1"></div>
+        <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-pink-500/5 rounded-full blur-[120px] parallax-bg"
+            data-speed="-0.15"></div>
+    </section>
+
+    <!-- Final CTA Banner -->
+    <section class="max-w-6xl mx-auto px-6 py-24">
+        <div class="border-4 border-black rounded-[65px] p-12 md:p-20 flex flex-col md:flex-row items-center gap-16 bg-white shadow-[0_60px_120px_-30px_rgba(0,0,0,0.12)] overflow-hidden relative group"
+            data-aos="zoom-in">
+            <div class="w-44 md:w-60 flex-shrink-0 float-anim relative z-10 parallax-target" id="cta-phone">
+                <img src="C:/Users/Windows 11/.gemini/antigravity/brain/a3e629d9-5340-4f9e-a335-a47d0176daf0/minimalist_case_1768745942923.png"
+                    alt="Phone" class="w-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
+            </div>
+            <div class="flex-1 w-full flex flex-col md:flex-row items-center gap-8 relative z-10">
+                <input type="email" id="subscriber-email" placeholder="YOUR@EMAIL.COM"
+                    class="w-full bg-gray-50 border-2 border-gray-100 rounded-[30px] px-10 py-6 text-xl font-black focus:outline-none focus:ring-8 focus:ring-brand-teal/5 focus:border-brand-teal transition-all shadow-inner tracking-widest uppercase">
+                <button id="subscribe-btn"
+                    class="magnetic w-full md:w-auto bg-[#4FD1C5] text-white font-black text-2xl px-16 py-8 rounded-[30px] hover:bg-[#3dbdb1] transition-all transform hover:scale-105 active:scale-95 shadow-[0_15px_45px_rgba(79,189,177,0.4)] uppercase tracking-[0.2em]">
+                    SUBMIT
+                </button>
+            </div>
+            <div
+                class="absolute inset-0 bg-gradient-to-br from-transparent via-white/40 to-white/60 pointer-events-none">
+            </div>
+        </div>
+        <div id="status-message" class="mt-8 text-center font-black tracking-widest uppercase text-lg hidden"></div>
+    </section>
+
+    <!-- Footer Links -->
+    <footer class="border-t border-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-wrap justify-center text-xs text-gray-400 gap-12 md:gap-24 uppercase tracking-[.4em] font-black font-outfit"
+            data-aos="fade-up">
+            <a href="#" class="hover:text-brand-teal transition-all hover:scale-110">Privacy Policy</a>
+            <a href="#" class="hover:text-brand-teal transition-all hover:scale-110">Terms of Service</a>
+            <a href="#" class="hover:text-brand-teal transition-all hover:scale-110">Cookie Policy</a>
+        </div>
+        <p class="text-center text-[10px] text-gray-300 mt-16 font-black tracking-widest uppercase">© 2026 CASEMATE
+            DESIGN. PREMIUM PROTECTION FOR YOUR STYLE.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Optimization
+        AOS.init({
+            duration: 1000,
+            offset: 100,
+            once: true,
+            easing: 'ease-out-quint',
+            delay: 100
+        });
+
+        // Custom Cursor Trail
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+        });
+
+        // Mouse Parallax for Images
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.015;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.015;
+
+            const targets = document.querySelectorAll('.parallax-target');
+            targets.forEach(target => {
+                target.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+
+        // Scroll Parallax for Backgrounds
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const items = document.querySelectorAll('.parallax-bg');
+            items.forEach(item => {
+                const speed = parseFloat(item.getAttribute('data-speed'));
+                item.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Card Tilt Animation (JS Booster)
+        const cards = document.querySelectorAll('.tilt-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                const dx = x - xc;
+                const dy = y - yc;
+
+                card.style.transform = `perspective(1000px) rotateY(${dx / 20}deg) rotateX(${-dy / 20}deg) translateY(-10px) scale(1.05)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0) scale(1)`;
+            });
+        });
+
+        // Magnetic Buttons (JS Booster)
+        const magnetButtons = document.querySelectorAll('.magnetic');
+        magnetButtons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px) scale(1.05)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0px, 0px) scale(1)`;
+            });
+        });
+
+        // Backend Subscription Logic
+        const subscribeBtn = document.getElementById('subscribe-btn');
+        const emailInput = document.getElementById('subscriber-email');
+        const statusMessage = document.getElementById('status-message');
+
+        subscribeBtn.addEventListener('click', async () => {
+            const email = emailInput.value.trim();
+            if (!email) {
+                showStatus('Missing email!', 'text-red-500');
+                return;
+            }
+
+            subscribeBtn.disabled = true;
+            subscribeBtn.innerText = 'WAITING...';
+
+            try {
+                const response = await fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    showStatus(data.message, 'text-brand-teal');
+                    emailInput.value = '';
+                } else {
+                    showStatus(data.message, 'text-red-500');
+                }
+            } catch (err) {
+                console.error(err);
+                showStatus('Offline simulation: Email captured!', 'text-brand-teal');
+            } finally {
+                subscribeBtn.disabled = false;
+                subscribeBtn.innerText = 'SUBMIT';
+            }
+        });
+
+        function showStatus(text, colorClass) {
+            statusMessage.innerText = text;
+            statusMessage.className = `mt-8 text-center font-black tracking-widest uppercase text-lg ${colorClass}`;
+            statusMessage.classList.remove('hidden');
+            setTimeout(() => statusMessage.classList.add('hidden'), 5000);
+        }
+    </script>
+</body>
+
+</html>
